@@ -1,0 +1,13 @@
+body{
+	background: grey;
+}
+html, body{
+	height: 100%;
+	margin:0;
+}
+#map{
+	margin: 0 auto;
+	top: 50px;
+	height: 500px;
+	width: 500px;
+}

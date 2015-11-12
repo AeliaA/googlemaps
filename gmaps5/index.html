@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Google Maps API2</title>
+<!-- loading map -->
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script>
+	var myCenter=new google.maps.LatLng(32.0000, 53.0000);
+	
+//creating function
+	function initialize()
+	{
+
+//Defining properties for map
+//3 imp properties for maps
+	var mapProp = {
+		center:myCenter,
+		zoom:5,
+
+//You can many features n stuff from website
+
+		disableDefaultUI:true,
+
+		// panControl:true,
+		// zoomControl:true,
+		// zoomControlOptions:{
+		// 	style:google.maps.ZoomControlStyle.SMALL
+		// },
+		// mapTypeControl:true,
+		// mapTypeControlOptions:{
+		// 	style:google.maps.MapTypeControlStyle.DROPDOWN_MENU
+		// },
+		// scaleControl:true,
+		// streetViewControl:true;
+		// overviewMapControl:true;
+		// rotateControl:true;
+
+//terrain or radmap style
+		mapTypeId:google.maps.MapTypeId.ROADMAP
+		};
+
+//Calling the map thrugh ID
+	map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+	google.maps.event.addListener(map, 'click', function(event){
+		placeMarker(event.latLng);
+	});
+}
+
+function placeMarker(location){
+	var marker = new google.maps.Marker({
+		position: location,
+		map: map,
+	});
+	var infowindow = new google.maps.InfoWindow({
+		content: 'Latitude: ' + location.lat() + '<br>Longitude: ' +
+		location.lng()
+	});
+	
+	infowindow.open(map, marker);
+}
+
+//when the window loads, the above function runs
+google.maps.event.addDomListener(window, 'load', initialize);
+	
+	</script>
+
+
+
+</head>
+<body>
+	<div id="googleMap" style="width:500px;height:380px;"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
